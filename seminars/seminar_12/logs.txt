@@ -1,0 +1,210 @@
+===================ModelNet40 Dataset===================
+Training with translation 0.2
+Evaluating with translation 0.1
+=============================================
+
+
+===================Network===================
+MinkowskiFCNN(
+  (mlp1): Sequential(
+    (0): MinkowskiLinear(in_features=3, out_features=32, bias=False)
+    (1): MinkowskiBatchNorm(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): MinkowskiLeakyReLU()
+  )
+  (conv1): Sequential(
+    (0): MinkowskiConvolution(in=32, out=48, kernel_size=[3, 3, 3], stride=[1, 1, 1], dilation=[1, 1, 1])
+    (1): MinkowskiBatchNorm(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): MinkowskiLeakyReLU()
+  )
+  (conv2): Sequential(
+    (0): MinkowskiConvolution(in=48, out=64, kernel_size=[3, 3, 3], stride=[2, 2, 2], dilation=[1, 1, 1])
+    (1): MinkowskiBatchNorm(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): MinkowskiLeakyReLU()
+  )
+  (conv3): Sequential(
+    (0): MinkowskiConvolution(in=64, out=96, kernel_size=[3, 3, 3], stride=[2, 2, 2], dilation=[1, 1, 1])
+    (1): MinkowskiBatchNorm(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): MinkowskiLeakyReLU()
+  )
+  (conv4): Sequential(
+    (0): MinkowskiConvolution(in=96, out=128, kernel_size=[3, 3, 3], stride=[2, 2, 2], dilation=[1, 1, 1])
+    (1): MinkowskiBatchNorm(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): MinkowskiLeakyReLU()
+  )
+  (conv5): Sequential(
+    (0): Sequential(
+      (0): MinkowskiConvolution(in=336, out=256, kernel_size=[3, 3, 3], stride=[2, 2, 2], dilation=[1, 1, 1])
+      (1): MinkowskiBatchNorm(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): MinkowskiLeakyReLU()
+    )
+    (1): Sequential(
+      (0): MinkowskiConvolution(in=256, out=512, kernel_size=[3, 3, 3], stride=[2, 2, 2], dilation=[1, 1, 1])
+      (1): MinkowskiBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): MinkowskiLeakyReLU()
+    )
+    (2): Sequential(
+      (0): MinkowskiConvolution(in=512, out=1024, kernel_size=[3, 3, 3], stride=[2, 2, 2], dilation=[1, 1, 1])
+      (1): MinkowskiBatchNorm(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): MinkowskiLeakyReLU()
+    )
+  )
+  (pool): MinkowskiMaxPooling(kernel_size=[3, 3, 3], stride=[2, 2, 2], dilation=[1, 1, 1])
+  (global_max_pool): MinkowskiGlobalMaxPooling(mode=PoolingMode.GLOBAL_MAX_POOLING_PYTORCH_INDEX)
+  (global_avg_pool): MinkowskiGlobalAvgPooling(mode=PoolingMode.GLOBAL_AVG_POOLING_PYTORCH_INDEX)
+  (final): Sequential(
+    (0): Sequential(
+      (0): MinkowskiLinear(in_features=2048, out_features=512, bias=False)
+      (1): MinkowskiBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): MinkowskiLeakyReLU()
+    )
+    (1): MinkowskiDropout()
+    (2): Sequential(
+      (0): MinkowskiLinear(in_features=512, out_features=512, bias=False)
+      (1): MinkowskiBatchNorm(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): MinkowskiLeakyReLU()
+    )
+    (3): MinkowskiLinear(in_features=512, out_features=40, bias=True)
+  )
+)
+=============================================
+
+
+SGD (
+Parameter Group 0
+    dampening: 0
+    differentiable: False
+    foreach: None
+    initial_lr: 0.1
+    lr: 0.1
+    maximize: False
+    momentum: 0.9
+    nesterov: False
+    weight_decay: 0.0001
+)
+<torch.optim.lr_scheduler.CosineAnnealingLR object at 0x7fb601926fe0>
+Archive:  modelnet40_ply_hdf5_2048.zip
+   creating: modelnet40_ply_hdf5_2048/
+  inflating: modelnet40_ply_hdf5_2048/ply_data_train_2_id2file.json  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_train2.h5  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_train4.h5  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_train1.h5  
+  inflating: modelnet40_ply_hdf5_2048/train_files.txt  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_train_4_id2file.json  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_test1.h5  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_test0.h5  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_test_1_id2file.json  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_train_1_id2file.json  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_train_0_id2file.json  
+  inflating: modelnet40_ply_hdf5_2048/test_files.txt  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_train0.h5  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_test_0_id2file.json  
+  inflating: modelnet40_ply_hdf5_2048/shape_names.txt  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_train3.h5  
+  inflating: modelnet40_ply_hdf5_2048/ply_data_train_3_id2file.json 
+  
+Iter: 400, Loss: 2.538e+00
+Iter: 500, Loss: 2.566e+00
+Iter: 600, Loss: 1.853e+00
+Iter: 700, Loss: 2.187e+00
+Iter: 800, Loss: 2.037e+00
+Iter: 900, Loss: 1.909e+00
+Iter: 1000, Loss: 1.783e+00
+Validation accuracy: 0.7568881685575365. Best accuracy: 0.7568881685575365
+Iter: 1100, Loss: 1.863e+00
+Iter: 1200, Loss: 1.644e+00
+Iter: 1300, Loss: 1.775e+00
+Iter: 1400, Loss: 1.702e+00
+Iter: 1500, Loss: 1.968e+00
+Iter: 1600, Loss: 2.009e+00
+Iter: 1700, Loss: 1.689e+00
+Iter: 1800, Loss: 1.646e+00
+Iter: 1900, Loss: 1.845e+00
+Iter: 2000, Loss: 1.485e+00
+Validation accuracy: 0.7974068071312804. Best accuracy: 0.7974068071312804
+Iter: 2100, Loss: 1.591e+00
+Iter: 2200, Loss: 1.581e+00
+Iter: 2300, Loss: 1.844e+00
+Iter: 2400, Loss: 2.025e+00
+Iter: 2500, Loss: 1.857e+00
+Iter: 2600, Loss: 1.851e+00
+Iter: 2700, Loss: 1.652e+00
+Iter: 2800, Loss: 1.754e+00
+Iter: 2900, Loss: 1.624e+00
+Iter: 3000, Loss: 1.665e+00
+Validation accuracy: 0.8354943273905997. Best accuracy: 0.8354943273905997
+Iter: 3100, Loss: 1.684e+00
+Iter: 3200, Loss: 1.662e+00
+Iter: 3300, Loss: 1.719e+00
+Iter: 3400, Loss: 1.770e+00
+Iter: 3500, Loss: 1.656e+00
+Iter: 3600, Loss: 1.709e+00
+Iter: 3700, Loss: 1.701e+00
+Iter: 3800, Loss: 1.577e+00
+Iter: 3900, Loss: 1.663e+00
+Iter: 4000, Loss: 1.661e+00
+Validation accuracy: 0.8626418152350082. Best accuracy: 0.8626418152350082
+Iter: 4100, Loss: 1.531e+00
+Iter: 4200, Loss: 1.692e+00
+Iter: 4300, Loss: 1.543e+00
+Iter: 4400, Loss: 1.547e+00
+Iter: 4500, Loss: 1.540e+00
+Iter: 4600, Loss: 1.609e+00
+Iter: 4700, Loss: 1.673e+00
+Iter: 4800, Loss: 1.422e+00
+Iter: 4900, Loss: 1.644e+00
+Iter: 5000, Loss: 1.541e+00
+Validation accuracy: 0.8760129659643436. Best accuracy: 0.8760129659643436
+Iter: 5100, Loss: 1.529e+00
+Iter: 5200, Loss: 1.572e+00
+Iter: 5300, Loss: 1.689e+00
+Iter: 5400, Loss: 1.532e+00
+Iter: 5500, Loss: 1.577e+00
+Iter: 5600, Loss: 1.451e+00
+Iter: 5700, Loss: 1.772e+00
+Iter: 5800, Loss: 1.550e+00
+Iter: 5900, Loss: 1.482e+00
+Iter: 6000, Loss: 1.455e+00
+Validation accuracy: 0.8869529983792545. Best accuracy: 0.8869529983792545
+Iter: 6100, Loss: 1.472e+00
+Iter: 6200, Loss: 1.442e+00
+Iter: 6300, Loss: 1.455e+00
+Iter: 6400, Loss: 1.531e+00
+Iter: 6500, Loss: 1.519e+00
+Iter: 6600, Loss: 1.562e+00
+Iter: 6700, Loss: 1.406e+00
+Iter: 6800, Loss: 1.483e+00
+Iter: 6900, Loss: 1.468e+00
+Iter: 7000, Loss: 1.368e+00
+Validation accuracy: 0.8893841166936791. Best accuracy: 0.8893841166936791
+Iter: 7100, Loss: 1.538e+00
+Iter: 7200, Loss: 1.463e+00
+Iter: 7300, Loss: 1.410e+00
+Iter: 7400, Loss: 1.678e+00
+Iter: 7500, Loss: 1.371e+00
+Iter: 7600, Loss: 1.594e+00
+Iter: 7700, Loss: 1.413e+00
+Iter: 7800, Loss: 1.376e+00
+Iter: 7900, Loss: 1.445e+00
+Iter: 8000, Loss: 1.548e+00
+Validation accuracy: 0.9003241491085899. Best accuracy: 0.9003241491085899
+Iter: 8100, Loss: 1.407e+00
+Iter: 8200, Loss: 1.604e+00
+Iter: 8300, Loss: 1.386e+00
+Iter: 8400, Loss: 1.612e+00
+Iter: 8500, Loss: 1.419e+00
+Iter: 8600, Loss: 1.462e+00
+Iter: 8700, Loss: 1.607e+00
+Iter: 8800, Loss: 1.482e+00
+Iter: 8900, Loss: 1.600e+00
+Iter: 9000, Loss: 1.460e+00
+Validation accuracy: 0.890194489465154. Best accuracy: 0.9003241491085899
+Iter: 9100, Loss: 1.489e+00
+Iter: 9200, Loss: 1.636e+00
+Iter: 9300, Loss: 1.361e+00
+Iter: 9400, Loss: 1.432e+00
+Iter: 9500, Loss: 1.633e+00
+Iter: 9600, Loss: 1.396e+00
+Iter: 9700, Loss: 1.386e+00
+Iter: 9800, Loss: 1.383e+00
+Iter: 9900, Loss: 1.325e+00
+Test accuracy: 0.8974878444084279
